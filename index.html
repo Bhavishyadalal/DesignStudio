@@ -7,7 +7,7 @@
   <meta name="description" content="Professional online design editor — Canva-style image & graphic design tool" />
   <meta name="theme-color" content="#0b0d12" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Playfair+Display:wght@700&family=Roboto+Mono&family=Oswald:wght@500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&family=Playfair+Display:wght@400;700;900&family=Roboto+Mono:wght@400;500;700&family=Oswald:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&family=Bebas+Neue&family=Dancing+Script:wght@500;700&family=Pacifico&family=Caveat:wght@500;700&family=Great+Vibes&family=Satisfy&family=Sacramento&family=Lobster&family=Righteous&family=Anton&family=Archivo+Black&family=Bungee&family=Passion+One:wght@700;900&family=Abril+Fatface&family=Cormorant+Garamond:wght@500;600;700&family=DM+Serif+Display&family=Libre+Baskerville:wght@400;700&family=Merriweather:wght@400;700;900&family=Lora:wght@500;600;700&family=Crimson+Text:wght@600;700&family=EB+Garamond:wght@500;700&family=Fjalla+One&family=Josefin+Sans:wght@400;600;700&family=Raleway:wght@500;700;800&family=Quicksand:wght@500;600;700&family=Comfortaa:wght@500;700&family=Nunito:wght@600;700;800&family=Karla:wght@500;700&family=Work+Sans:wght@500;700;800&family=Barlow+Condensed:wght@500;700&family=Teko:wght@500;600;700&family=Orbitron:wght@600;800&family=Press+Start+2P&family=VT323&family=Permanent+Marker&family=Shadows+Into+Light&family=Amatic+SC:wght@700&family=Kalam:wght@500;700&family=Indie+Flower&family=Courgette&family=Cinzel:wght@500;700&family=Playfair+Display+SC:wght@700&family=Yeseva+One&family=Unbounded:wght@500;700;800&family=Space+Mono:wght@400;700&family=IBM+Plex+Mono:wght@500;600&family=Zilla+Slab:wght@500;700&display=swap" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js"></script>
 
 <style>
@@ -2527,6 +2527,86 @@ body.drawer-open .canvas-viewport { pointer-events: none; }
 
 /* ---------- Performance toggle row in the overflow menu ---------- */
 .perf-note { padding: 9px 11px 4px; font-size: 11px; color: var(--text-3); line-height: 1.45; }
+
+
+/* ==========================================================================
+   ULTRA LAYER v6 — fonts + elements
+   ========================================================================== */
+
+/* ---------- Font browser ---------- */
+.font-cats {
+  display: flex; gap: 5px; margin-bottom: 10px; overflow-x: auto; padding-bottom: 2px;
+  scrollbar-width: none;
+}
+.font-cats::-webkit-scrollbar { display: none; }
+.font-cat {
+  flex-shrink: 0; padding: 7px 12px; border-radius: 999px; font-size: 11.5px; font-weight: 600;
+  color: var(--text-3); background: rgba(255,255,255,.03); border: 1px solid var(--glass-border);
+  transition: all .18s var(--ease-out); white-space: nowrap;
+}
+.font-cat:hover { color: var(--text); border-color: var(--glass-border-hi); }
+.font-cat.active { color: #fff; background: var(--grad-brand); border-color: transparent; box-shadow: 0 4px 14px rgba(139,92,246,.4); }
+
+.font-presets { display: flex; flex-direction: column; gap: 5px; max-height: 480px; overflow-y: auto; padding-right: 2px; }
+.font-btn {
+  position: relative; display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 12px 14px; border-radius: 11px; text-align: left; font-size: 19px; line-height: 1.15;
+  background: rgba(255,255,255,.025); border: 1px solid var(--glass-border); color: var(--text);
+  transition: all .18s var(--ease-out); overflow: hidden;
+}
+.font-btn::after { content: none; }
+.font-btn:hover { border-color: rgba(167,139,250,.55); background: rgba(139,92,246,.1); transform: translateX(3px); }
+.font-btn .fn-label { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.font-btn .fn-tag {
+  flex-shrink: 0; font-family: var(--font) !important; font-size: 9.5px; font-weight: 700; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--text-3); background: rgba(255,255,255,.06);
+  padding: 3px 7px; border-radius: 6px; border: 1px solid var(--glass-border);
+}
+.font-btn.active { border-color: #8b5cf6; background: var(--grad-brand-soft); box-shadow: 0 0 0 1px rgba(139,92,246,.3); }
+.font-btn.active .fn-tag { color: #ddd6fe; background: rgba(139,92,246,.25); border-color: transparent; }
+
+/* ---------- Font search ---------- */
+.font-search { margin-bottom: 10px; }
+
+/* ---------- Element category tabs (Elements panel) ---------- */
+.el-cats { display: flex; gap: 5px; margin: 0 0 12px; overflow-x: auto; scrollbar-width: none; }
+.el-cats::-webkit-scrollbar { display: none; }
+.el-cat {
+  flex-shrink: 0; padding: 6px 11px; border-radius: 999px; font-size: 11px; font-weight: 600;
+  color: var(--text-3); background: rgba(255,255,255,.03); border: 1px solid var(--glass-border);
+  transition: all .18s;
+}
+.el-cat.active { color: #fff; background: var(--grad-brand); border-color: transparent; }
+.el-group { display: none; }
+.el-group.active { display: block; }
+
+/* ---------- Divider element preview strip ---------- */
+.divider-grid { display: flex; flex-direction: column; gap: 8px; }
+.divider-btn {
+  padding: 14px 12px; border-radius: 10px; background: rgba(255,255,255,.03); border: 1px solid var(--glass-border);
+  transition: all .18s var(--ease-out); display: flex; align-items: center; justify-content: center;
+}
+.divider-btn:hover { border-color: rgba(167,139,250,.55); background: rgba(139,92,246,.08); transform: translateY(-1px); }
+.divider-btn svg { width: 100%; height: 20px; }
+
+/* ---------- Badge / frame preview grid ---------- */
+.deco-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.deco-btn {
+  aspect-ratio: 1; border-radius: 11px; background: rgba(255,255,255,.03); border: 1px solid var(--glass-border);
+  display: flex; align-items: center; justify-content: center; padding: 8px;
+  transition: all .2s var(--ease-spring);
+}
+.deco-btn:hover { border-color: rgba(167,139,250,.6); background: rgba(139,92,246,.1); transform: translateY(-2px) scale(1.03); }
+.deco-btn svg { width: 100%; height: 100%; }
+
+/* ---------- Quote block preview ---------- */
+.quote-grid { display: flex; flex-direction: column; gap: 8px; }
+.quote-btn {
+  padding: 12px; border-radius: 11px; background: rgba(255,255,255,.03); border: 1px solid var(--glass-border);
+  text-align: left; font-size: 11px; color: var(--text-2); transition: all .18s;
+}
+.quote-btn:hover { border-color: rgba(167,139,250,.55); background: rgba(139,92,246,.08); }
+.quote-btn b { display: block; font-size: 10px; color: #a78bfa; margin-bottom: 4px; text-transform: uppercase; letter-spacing: .06em; }
 
 </style>
 </head>
@@ -7276,6 +7356,495 @@ if (perfLite && savedPerf === null) {
 }
 
 })(); // end ultra5
+
+
+
+/* ============================================================================
+   ULTRA LAYER v6 — expanded font library
+   ============================================================================ */
+(function ultraFonts() {
+'use strict';
+const $1 = (s) => document.querySelector(s);
+const el = (tag, cls, html) => { const n = document.createElement(tag); if (cls) n.className = cls; if (html != null) n.innerHTML = html; return n; };
+
+// =====================================================================
+//  FONT LIBRARY  — name, css stack, category, sample weight
+// =====================================================================
+const FONTS = [
+  // Sans — clean, modern workhorses
+  { n: 'Inter',              cat: 'Sans',      w: 600 },
+  { n: 'Poppins',            cat: 'Sans',      w: 600 },
+  { n: 'Montserrat',         cat: 'Sans',      w: 700 },
+  { n: 'Space Grotesk',      cat: 'Sans',      w: 600 },
+  { n: 'Raleway',            cat: 'Sans',      w: 700 },
+  { n: 'Nunito',             cat: 'Sans',      w: 700 },
+  { n: 'Quicksand',          cat: 'Sans',      w: 700 },
+  { n: 'Comfortaa',          cat: 'Sans',      w: 700 },
+  { n: 'Karla',              cat: 'Sans',      w: 700 },
+  { n: 'Work Sans',          cat: 'Sans',      w: 700 },
+  { n: 'Josefin Sans',       cat: 'Sans',      w: 600 },
+  { n: 'Unbounded',          cat: 'Sans',      w: 700 },
+  // Display — big, bold, headline-only
+  { n: 'Bebas Neue',         cat: 'Display',   w: 400, tracking: 1 },
+  { n: 'Anton',              cat: 'Display',   w: 400 },
+  { n: 'Archivo Black',      cat: 'Display',   w: 400 },
+  { n: 'Righteous',          cat: 'Display',   w: 400 },
+  { n: 'Bungee',             cat: 'Display',   w: 400 },
+  { n: 'Passion One',        cat: 'Display',   w: 900 },
+  { n: 'Fjalla One',         cat: 'Display',   w: 400 },
+  { n: 'Oswald',             cat: 'Display',   w: 600 },
+  { n: 'Teko',               cat: 'Display',   w: 600 },
+  { n: 'Barlow Condensed',   cat: 'Display',   w: 700 },
+  { n: 'Yeseva One',         cat: 'Display',   w: 400 },
+  // Serif — editorial, elegant
+  { n: 'Playfair Display',   cat: 'Serif',     w: 700 },
+  { n: 'DM Serif Display',   cat: 'Serif',     w: 400 },
+  { n: 'Abril Fatface',      cat: 'Serif',     w: 400 },
+  { n: 'Cormorant Garamond', cat: 'Serif',     w: 700 },
+  { n: 'Libre Baskerville',  cat: 'Serif',     w: 700 },
+  { n: 'Merriweather',       cat: 'Serif',     w: 700 },
+  { n: 'Lora',               cat: 'Serif',     w: 700 },
+  { n: 'Crimson Text',       cat: 'Serif',     w: 700 },
+  { n: 'EB Garamond',        cat: 'Serif',     w: 700 },
+  { n: 'Cinzel',             cat: 'Serif',     w: 700, tracking: 1 },
+  { n: 'Zilla Slab',         cat: 'Serif',     w: 700 },
+  { n: 'Georgia',            cat: 'Serif',     w: 700, system: true },
+  // Script — handwritten, fancy
+  { n: 'Dancing Script',     cat: 'Script',    w: 700 },
+  { n: 'Great Vibes',        cat: 'Script',    w: 400 },
+  { n: 'Satisfy',            cat: 'Script',    w: 400 },
+  { n: 'Sacramento',         cat: 'Script',    w: 400 },
+  { n: 'Pacifico',           cat: 'Script',    w: 400 },
+  { n: 'Lobster',            cat: 'Script',    w: 400 },
+  { n: 'Caveat',             cat: 'Script',    w: 700 },
+  { n: 'Courgette',          cat: 'Script',    w: 400 },
+  { n: 'Permanent Marker',   cat: 'Script',    w: 400 },
+  { n: 'Shadows Into Light', cat: 'Script',    w: 400 },
+  { n: 'Amatic SC',          cat: 'Script',    w: 700 },
+  { n: 'Kalam',              cat: 'Script',    w: 700 },
+  { n: 'Indie Flower',       cat: 'Script',    w: 400 },
+  // Mono / tech
+  { n: 'Roboto Mono',        cat: 'Mono',      w: 700 },
+  { n: 'Space Mono',         cat: 'Mono',      w: 700 },
+  { n: 'IBM Plex Mono',      cat: 'Mono',      w: 600 },
+  { n: 'VT323',              cat: 'Mono',      w: 400 },
+  { n: 'Orbitron',           cat: 'Mono',      w: 800 },
+  { n: 'Press Start 2P',     cat: 'Mono',      w: 400 },
+  { n: 'Courier New',        cat: 'Mono',      w: 700, system: true },
+  // System fallbacks (no load needed, always safe)
+  { n: 'Arial',              cat: 'Sans',      w: 700, system: true },
+  { n: 'Helvetica',          cat: 'Sans',      w: 700, system: true },
+  { n: 'Impact',             cat: 'Display',   w: 400, system: true },
+];
+
+const CATS = ['All', 'Sans', 'Serif', 'Display', 'Script', 'Mono'];
+
+window.FONT_LIBRARY = FONTS.map((f) => f.n);
+
+// =====================================================================
+//  BUILD THE PANEL
+// =====================================================================
+function buildFontPanel() {
+  const oldGrid = document.querySelector('.font-presets');
+  const oldHeading = [...document.querySelectorAll('#panel-text h3')].find((h) => /font/i.test(h.textContent));
+  if (!oldGrid) return;
+
+  oldHeading.textContent = 'Fonts';
+
+  const search = el('div', 'lib-search font-search',
+    `<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg><input type="search" id="font-search" placeholder="Search 50+ fonts…" aria-label="Search fonts" />`);
+
+  const cats = el('div', 'font-cats');
+  CATS.forEach((c) => {
+    const b = el('button', 'font-cat' + (c === 'All' ? ' active' : ''), c);
+    b.dataset.cat = c;
+    cats.appendChild(b);
+  });
+
+  const grid = el('div', 'font-presets');
+  grid.id = 'font-grid';
+
+  oldGrid.replaceWith(grid);
+  oldHeading.insertAdjacentElement('afterend', cats);
+  oldHeading.insertAdjacentElement('afterend', search);
+
+  function render(filterCat, query) {
+    grid.innerHTML = '';
+    const q = (query || '').trim().toLowerCase();
+    FONTS.filter((f) => (filterCat === 'All' || f.cat === filterCat) && (!q || f.n.toLowerCase().includes(q)))
+      .forEach((f) => {
+        const stack = f.system ? `'${f.n}', sans-serif` : `'${f.n}'`;
+        const b = el('button', 'font-btn');
+        b.dataset.font = f.n;
+        b.style.fontFamily = stack;
+        b.style.fontWeight = f.w;
+        if (f.tracking) b.style.letterSpacing = '.04em';
+        b.innerHTML = `<span class="fn-label">${f.n}</span><span class="fn-tag">${f.cat}</span>`;
+        b.addEventListener('click', () => applyFontChoice(f.n));
+        grid.appendChild(b);
+      });
+    if (!grid.children.length) grid.innerHTML = '<p style="text-align:center;padding:26px 10px;color:var(--text-3);font-size:12.5px">No fonts match that search.</p>';
+    syncActiveFontBtn();
+  }
+
+  let activeCat = 'All';
+  cats.addEventListener('click', (e) => {
+    const b = e.target.closest('.font-cat'); if (!b) return;
+    cats.querySelectorAll('.font-cat').forEach((x) => x.classList.remove('active'));
+    b.classList.add('active');
+    activeCat = b.dataset.cat;
+    render(activeCat, search.querySelector('input').value);
+  });
+  search.querySelector('input').addEventListener('input', (e) => render(activeCat, e.target.value));
+
+  render('All', '');
+}
+
+function applyFontChoice(fontName) {
+  const obj = canvas.getActiveObject();
+  if (obj && (obj.type === 'i-text' || obj.type === 'text' || obj.type === 'textbox')) {
+    obj.set('fontFamily', fontName);
+    canvas.requestRenderAll();
+    saveHistory();
+    updateProps();
+    toast(`Font: ${fontName}`);
+  } else {
+    addText('Sample Text', 44, 'normal', fontName);
+  }
+}
+
+function syncActiveFontBtn() {
+  const obj = canvas.getActiveObject();
+  const current = obj && obj.fontFamily ? obj.fontFamily.replace(/^'|'$/g, '') : null;
+  document.querySelectorAll('.font-btn').forEach((b) => b.classList.toggle('active', current && b.dataset.font === current));
+}
+canvas.on('selection:created', syncActiveFontBtn);
+canvas.on('selection:updated', syncActiveFontBtn);
+canvas.on('selection:cleared', syncActiveFontBtn);
+
+// =====================================================================
+//  EXTEND THE PROPERTIES-PANEL FONT DROPDOWN + TOP TEXT-PANEL SELECT
+// =====================================================================
+function extendFontSelect(selectEl) {
+  if (!selectEl) return;
+  selectEl.innerHTML = '';
+  let lastCat = null;
+  FONTS.forEach((f) => {
+    if (f.cat !== lastCat) {
+      const og = document.createElement('optgroup');
+      og.label = f.cat;
+      og.dataset.cat = f.cat;
+      selectEl.appendChild(og);
+      lastCat = f.cat;
+    }
+    const opt = document.createElement('option');
+    opt.value = f.n; opt.textContent = f.n;
+    opt.style.fontFamily = f.system ? f.n : `'${f.n}'`;
+    selectEl.lastChild.appendChild(opt);
+  });
+}
+extendFontSelect(document.getElementById('prop-font'));
+
+// =====================================================================
+//  PRELOAD  — force the browser to fetch every family before first use,
+//  so a click never shows fallback text for a beat.
+// =====================================================================
+(function preload() {
+  const box = document.createElement('div');
+  box.style.cssText = 'position:absolute;left:-9999px;top:-9999px;opacity:0;pointer-events:none;font-size:1px;';
+  FONTS.filter((f) => !f.system).forEach((f) => {
+    const s = document.createElement('span');
+    s.style.fontFamily = `'${f.n}'`;
+    s.textContent = 'Ag';
+    box.appendChild(s);
+  });
+  document.body.appendChild(box);
+})();
+
+buildFontPanel();
+
+})();
+
+/* ============================================================================
+   ULTRA LAYER v6 — new elements: dividers, frames/badges, quote blocks
+   ============================================================================ */
+(function ultraElements() {
+'use strict';
+const $1 = (s) => document.querySelector(s);
+const el = (tag, cls, html) => { const n = document.createElement(tag); if (cls) n.className = cls; if (html != null) n.innerHTML = html; return n; };
+
+// =====================================================================
+//  ELEMENT CATEGORY TABS — reorganise the growing Elements panel
+//  Runs LAST (see bottom of this file) so every panel below has already
+//  injected its heading + content into #panel-elements first.
+// =====================================================================
+function categorize() {
+  const panel = document.getElementById('panel-elements');
+  const headings = [...panel.querySelectorAll('h3')];
+
+  // group each heading + its immediate following content-block into a named section
+  const sections = [];
+  headings.forEach((h, i) => {
+    const nodes = [];
+    let n = h.nextElementSibling;
+    // stop at the next heading
+    while (n && n.tagName !== 'H3') { nodes.push(n); n = n.nextElementSibling; }
+    sections.push({ heading: h, nodes, title: h.textContent.trim() });
+  });
+
+  const CATMAP = {
+    'Shapes': 'Shapes', 'Icons': 'Shapes', 'Stickers & Icons': 'Shapes', 'Stickers &amp; Icons': 'Shapes',
+    'Dividers': 'Lines', 'Frames & badges': 'Frames', 'Frames &amp; badges': 'Frames',
+    'Quote blocks': 'Text blocks', 'Text blocks': 'Text blocks',
+    'Colour themes': 'Style', 'Pattern backgrounds': 'Style', 'Backgrounds': 'Style',
+  };
+  const order = ['Shapes', 'Lines', 'Frames', 'Text blocks', 'Style'];
+
+  const groups = {};
+  sections.forEach((s) => {
+    const cat = CATMAP[s.title] || 'Shapes';
+    (groups[cat] = groups[cat] || []).push(s);
+  });
+
+  const tabs = el('div', 'el-cats');
+  const body = el('div');
+  order.filter((c) => groups[c]).forEach((cat, i) => {
+    const t = el('button', 'el-cat' + (i === 0 ? ' active' : ''), cat);
+    t.dataset.cat = cat;
+    tabs.appendChild(t);
+
+    const g = el('div', 'el-group' + (i === 0 ? ' active' : ''));
+    g.dataset.cat = cat;
+    groups[cat].forEach((s) => { g.appendChild(s.heading); s.nodes.forEach((n) => g.appendChild(n)); });
+    body.appendChild(g);
+  });
+
+  // whatever wasn't in the map (a tipbar, future insertions) stays pinned above the tabs
+  const lead = [];
+  [...panel.childNodes].forEach((n) => { if (n.nodeType === 1 && n.classList.contains('tipbar')) lead.push(n); });
+
+  panel.innerHTML = '';
+  lead.forEach((n) => panel.appendChild(n));
+  panel.appendChild(tabs);
+  panel.appendChild(body);
+
+  tabs.addEventListener('click', (e) => {
+    const b = e.target.closest('.el-cat'); if (!b) return;
+    tabs.querySelectorAll('.el-cat').forEach((x) => x.classList.remove('active'));
+    b.classList.add('active');
+    body.querySelectorAll('.el-group').forEach((g) => g.classList.toggle('active', g.dataset.cat === b.dataset.cat));
+  });
+}
+
+// =====================================================================
+//  DIVIDERS — decorative line elements
+// =====================================================================
+const DIVIDERS = [
+  { name: 'Simple line',   path: 'M0 10H400', sw: 3 },
+  { name: 'Dashed',        path: 'M0 10H400', sw: 3, dash: [14, 10] },
+  { name: 'Dotted',        path: 'M0 10H400', sw: 6, dash: [1, 16], cap: 'round' },
+  { name: 'Double line',   double: true },
+  { name: 'Wavy',          path: 'M0 10 Q 20 -4 40 10 T 80 10 T 120 10 T 160 10 T 200 10 T 240 10 T 280 10 T 320 10 T 360 10 T 400 10', sw: 3 },
+  { name: 'Zigzag',        path: 'M0 15 L20 5 L40 15 L60 5 L80 15 L100 5 L120 15 L140 5 L160 15 L180 5 L200 15 L220 5 L240 15 L260 5 L280 15 L300 5 L320 15 L340 5 L360 15 L380 5 L400 15', sw: 3 },
+  { name: 'Ornate',        ornate: true },
+  { name: 'Arrow line',    path: 'M0 10H370M370 10 360 2M370 10 360 18', sw: 3 },
+];
+
+(function dividerPanel() {
+  const panel = document.getElementById('panel-elements');
+  const h = el('h3', null, 'Dividers');
+  const grid = el('div', 'divider-grid');
+  DIVIDERS.forEach((d) => {
+    let inner;
+    if (d.double) inner = `<svg viewBox="0 0 400 20" preserveAspectRatio="none"><line x1="0" y1="7" x2="400" y2="7" stroke="var(--text-2)" stroke-width="2.5"/><line x1="0" y1="14" x2="400" y2="14" stroke="var(--text-2)" stroke-width="2.5"/></svg>`;
+    else if (d.ornate) inner = `<svg viewBox="0 0 400 20"><line x1="0" y1="10" x2="170" y2="10" stroke="var(--text-2)" stroke-width="2"/><circle cx="185" cy="10" r="4" fill="none" stroke="var(--text-2)" stroke-width="2"/><path d="M200 10 210 5 220 10 210 15Z" fill="var(--text-2)"/><circle cx="215" cy="10" r="4" fill="none" stroke="var(--text-2)" stroke-width="2"/><line x1="230" y1="10" x2="400" y2="10" stroke="var(--text-2)" stroke-width="2"/></svg>`;
+    else inner = `<svg viewBox="0 0 400 20" preserveAspectRatio="none"><path d="${d.path}" fill="none" stroke="var(--text-2)" stroke-width="${d.sw}" ${d.dash ? `stroke-dasharray="${d.dash.join(',')}"` : ''} ${d.cap ? `stroke-linecap="${d.cap}"` : ''}/></svg>`;
+    const b = el('button', 'divider-btn', inner);
+    b.dataset.tip = d.name;
+    b.addEventListener('click', () => addDivider(d));
+    grid.appendChild(b);
+  });
+  h.after(); panel.appendChild(h); panel.appendChild(grid);
+})();
+
+function addDivider(d) {
+  const cx = canvas.width / 2, cy = canvas.height / 2, w = 360, stroke = '#111827';
+  let obj;
+  if (d.double) {
+    const g = new fabric.Group([
+      new fabric.Line([0, 0, w, 0], { stroke, strokeWidth: 2.5 }),
+      new fabric.Line([0, 8, w, 8], { stroke, strokeWidth: 2.5 }),
+    ], { name: 'Divider' });
+    obj = g;
+  } else if (d.ornate) {
+    const parts = [
+      new fabric.Line([0, 0, w * 0.42, 0], { stroke, strokeWidth: 2 }),
+      new fabric.Circle({ left: w * 0.42 + 10, top: -4, radius: 4, fill: 'transparent', stroke, strokeWidth: 2 }),
+      new fabric.Polygon([{ x: 0, y: -5 }, { x: 10, y: 0 }, { x: 0, y: 5 }], { left: w * 0.5, top: -5, fill: stroke }),
+      new fabric.Circle({ left: w * 0.58 - 10, top: -4, radius: 4, fill: 'transparent', stroke, strokeWidth: 2 }),
+      new fabric.Line([w * 0.58, 0, w, 0], { stroke, strokeWidth: 2 }),
+    ];
+    obj = new fabric.Group(parts, { name: 'Ornate divider' });
+  } else {
+    obj = new fabric.Path(d.path.replace(/^M0/, 'M0').replace('400', String(w)), {
+      fill: 'transparent', stroke, strokeWidth: d.sw,
+      strokeDashArray: d.dash || null, strokeLineCap: d.cap || 'butt',
+      name: d.name,
+    });
+  }
+  obj.set({ left: cx - w / 2, top: cy, name: obj.name || d.name });
+  canvas.add(obj);
+  canvas.setActiveObject(obj);
+  popIn(obj);
+  saveHistory(); updateLayers();
+  setStatus(`${d.name} added`);
+}
+
+// =====================================================================
+//  FRAMES & BADGES — decorative containers
+// =====================================================================
+const DECOS = [
+  { name: 'Circle badge', kind: 'circle-badge' },
+  { name: 'Ribbon banner', kind: 'ribbon' },
+  { name: 'Corner frame', kind: 'corner-frame' },
+  { name: 'Polaroid', kind: 'polaroid' },
+  { name: 'Price tag', kind: 'price-tag' },
+  { name: 'Sale burst', kind: 'burst-badge' },
+  { name: 'Rounded card', kind: 'card' },
+  { name: 'Ticket stub', kind: 'ticket' },
+  { name: 'Arch frame', kind: 'arch' },
+];
+
+(function decoPanel() {
+  const panel = document.getElementById('panel-elements');
+  const h = el('h3', null, 'Frames & badges');
+  const grid = el('div', 'deco-grid');
+  const PREVIEW = {
+    'circle-badge': `<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="none" stroke="var(--text-2)" stroke-width="2"/><circle cx="20" cy="20" r="11" fill="none" stroke="var(--text-2)" stroke-width="1.4"/></svg>`,
+    'ribbon': `<svg viewBox="0 0 40 40"><path d="M4 14h32v10H4z" fill="var(--text-2)"/><path d="M4 14 10 8v22l-6-4z" fill="var(--text-2)" opacity=".6"/><path d="M36 14 30 8v22l6-4z" fill="var(--text-2)" opacity=".6"/></svg>`,
+    'corner-frame': `<svg viewBox="0 0 40 40"><path d="M6 16V6h10M34 16V6H24M6 24v10h10M34 24v10H24" fill="none" stroke="var(--text-2)" stroke-width="2.5"/></svg>`,
+    'polaroid': `<svg viewBox="0 0 40 40"><rect x="6" y="4" width="28" height="28" fill="none" stroke="var(--text-2)" stroke-width="2"/><rect x="9" y="7" width="22" height="17" fill="var(--text-2)" opacity=".35"/></svg>`,
+    'price-tag': `<svg viewBox="0 0 40 40"><path d="M6 6h16l12 12-16 16L6 22Z" fill="none" stroke="var(--text-2)" stroke-width="2"/><circle cx="14" cy="14" r="2.5" fill="var(--text-2)"/></svg>`,
+    'burst-badge': `<svg viewBox="0 0 40 40"><path d="M20 2 23 10 31 6 29 15 38 17 30 22 34 30 25 27 22 36 18 27 9 30 13 22 5 17 14 15 12 6 20 10Z" fill="var(--text-2)" opacity=".8"/></svg>`,
+    'card': `<svg viewBox="0 0 40 40"><rect x="5" y="9" width="30" height="22" rx="4" fill="none" stroke="var(--text-2)" stroke-width="2"/></svg>`,
+    'ticket': `<svg viewBox="0 0 40 40"><path d="M4 12h32v16H4z" fill="none" stroke="var(--text-2)" stroke-width="2"/><circle cx="20" cy="12" r="2.5" fill="var(--bg,#111)"/><circle cx="20" cy="28" r="2.5" fill="var(--bg,#111)"/><line x1="20" y1="16" x2="20" y2="24" stroke="var(--text-2)" stroke-width="1.4" stroke-dasharray="2,2"/></svg>`,
+    'arch': `<svg viewBox="0 0 40 40"><path d="M8 34V18a12 12 0 0 1 24 0v16" fill="none" stroke="var(--text-2)" stroke-width="2.5"/></svg>`,
+  };
+  DECOS.forEach((d) => {
+    const b = el('button', 'deco-btn', PREVIEW[d.kind] || '');
+    b.dataset.tip = d.name;
+    b.addEventListener('click', () => addDeco(d.kind, d.name));
+    grid.appendChild(b);
+  });
+  panel.appendChild(h); panel.appendChild(grid);
+})();
+
+function addDeco(kind, name) {
+  const cx = canvas.width / 2, cy = canvas.height / 2;
+  const common = { originX: 'center', originY: 'center', left: cx, top: cy, name };
+  let obj;
+
+  if (kind === 'circle-badge') {
+    obj = new fabric.Group([
+      new fabric.Circle({ radius: 90, fill: 'transparent', stroke: '#111827', strokeWidth: 4 }),
+      new fabric.Circle({ radius: 74, fill: 'transparent', stroke: '#111827', strokeWidth: 2 }),
+    ], common);
+  } else if (kind === 'ribbon') {
+    obj = new fabric.Group([
+      new fabric.Rect({ left: -160, top: -24, width: 320, height: 48, fill: '#6366f1' }),
+      new fabric.Polygon([{ x: -160, y: -24 }, { x: -190, y: 0 }, { x: -160, y: 24 }], { fill: '#4f46e5' }),
+      new fabric.Polygon([{ x: 160, y: -24 }, { x: 190, y: 0 }, { x: 160, y: 24 }], { fill: '#4f46e5' }),
+    ], common);
+  } else if (kind === 'corner-frame') {
+    const L = 260, c = 46, sw = 6, col = '#111827';
+    const mk = (x, y, path) => new fabric.Path(path, { left: x, top: y, fill: 'transparent', stroke: col, strokeWidth: sw, strokeLineCap: 'round' });
+    obj = new fabric.Group([
+      mk(-L / 2, -L / 2, `M0 ${c} V0 H${c}`),
+      mk(L / 2 - c, -L / 2, `M0 0 H${c} V${c}`),
+      mk(-L / 2, L / 2 - c, `M0 0 V${c} H${c}`),
+      mk(L / 2 - c, L / 2 - c, `M0 ${c} V0 H${c}`),
+    ], common);
+  } else if (kind === 'polaroid') {
+    obj = new fabric.Group([
+      new fabric.Rect({ width: 220, height: 260, fill: '#ffffff', rx: 3, ry: 3, shadow: new fabric.Shadow({ color: 'rgba(0,0,0,0.35)', blur: 24, offsetY: 10 }) }),
+      new fabric.Rect({ top: -18, width: 190, height: 190, fill: '#d4d4d8' }),
+    ], common);
+  } else if (kind === 'price-tag') {
+    obj = new fabric.Group([
+      new fabric.Path('M -100 -50 L 40 -50 L 100 10 L 40 70 L -100 70 Z', { fill: '#fbbf24', stroke: '#b45309', strokeWidth: 2 }),
+      new fabric.Circle({ left: -70, top: -35, radius: 8, fill: '#fff', stroke: '#b45309', strokeWidth: 2 }),
+    ], common);
+  } else if (kind === 'burst-badge') {
+    const pts = []; const n = 14;
+    for (let i = 0; i < n * 2; i++) { const r = i % 2 === 0 ? 100 : 78; const a = Math.PI * i / n - Math.PI / 2; pts.push({ x: r * Math.cos(a), y: r * Math.sin(a) }); }
+    obj = new fabric.Polygon(pts, { ...common, fill: '#ef4444' });
+  } else if (kind === 'card') {
+    obj = new fabric.Rect({ ...common, width: 280, height: 180, rx: 18, ry: 18, fill: '#ffffff', shadow: new fabric.Shadow({ color: 'rgba(0,0,0,0.25)', blur: 30, offsetY: 14 }) });
+  } else if (kind === 'ticket') {
+    obj = new fabric.Group([
+      new fabric.Rect({ width: 300, height: 130, fill: '#fef3c7', stroke: '#92400e', strokeWidth: 2 }),
+      new fabric.Circle({ left: 0, top: -65, radius: 10, fill: '#0e1016' }),
+      new fabric.Circle({ left: 0, top: 65, radius: 10, fill: '#0e1016' }),
+      new fabric.Line([0, -45, 0, 45], { stroke: '#92400e', strokeWidth: 1.5, strokeDashArray: [4, 4] }),
+    ], common);
+  } else if (kind === 'arch') {
+    obj = new fabric.Path('M -90 100 V -10 A 90 90 0 0 1 90 -10 V 100', { ...common, fill: 'transparent', stroke: '#111827', strokeWidth: 5 });
+  } else return;
+
+  canvas.add(obj);
+  canvas.setActiveObject(obj);
+  popIn(obj);
+  saveHistory(); updateLayers();
+  setStatus(`${name} added`);
+}
+
+// =====================================================================
+//  QUOTE BLOCKS — pre-composed text + mark groups
+// =====================================================================
+const QUOTES = [
+  { name: 'Big quote mark',  build: () => new fabric.Text('“', { fontFamily: 'Georgia', fontSize: 220, fontWeight: 'bold', fill: '#c4b5fd' }) },
+  { name: 'Quote + attribution', build: () => new fabric.Group([
+      new fabric.Textbox('Type an inspiring quote here.', { width: 420, fontFamily: 'Playfair Display', fontSize: 34, fontStyle: 'italic', fill: '#111827', textAlign: 'center' }),
+      new fabric.Text('— Attribution', { top: 90, left: 60, fontFamily: 'Inter', fontSize: 18, fill: '#6b7280' }),
+    ], { name: 'Quote block' }) },
+  { name: 'Callout box', build: () => new fabric.Group([
+      new fabric.Rect({ width: 420, height: 130, rx: 16, ry: 16, fill: '#eef2ff', stroke: '#c7d2fe', strokeWidth: 2 }),
+      new fabric.Rect({ width: 6, height: 130, fill: '#6366f1' }),
+      new fabric.Textbox('A short callout or highlighted note goes here.', { left: 24, top: 24, width: 370, fontFamily: 'Inter', fontSize: 18, fill: '#312e81' }),
+    ], { name: 'Callout' }) },
+  { name: 'Stat highlight', build: () => new fabric.Group([
+      new fabric.Text('87%', { fontFamily: 'Space Grotesk', fontSize: 96, fontWeight: 'bold', fill: '#111827' }),
+      new fabric.Textbox('of people prefer a clear, bold statistic', { top: 100, width: 260, fontFamily: 'Inter', fontSize: 18, fill: '#6b7280' }),
+    ], { name: 'Stat highlight' }) },
+];
+
+(function quotePanel() {
+  const panel = document.getElementById('panel-elements');
+  const h = el('h3', null, 'Text blocks');
+  const grid = el('div', 'quote-grid');
+  QUOTES.forEach((q) => {
+    const b = el('button', 'quote-btn', `<b>${q.name}</b>Tap to add to canvas`);
+    b.addEventListener('click', () => addQuote(q));
+    grid.appendChild(b);
+  });
+  panel.appendChild(h); panel.appendChild(grid);
+})();
+
+function addQuote(q) {
+  const obj = q.build();
+  obj.set({ left: canvas.width / 2 - (obj.width || 200) / 2, top: canvas.height / 2 - (obj.height || 80) / 2 });
+  canvas.add(obj);
+  canvas.setActiveObject(obj);
+  popIn(obj);
+  saveHistory(); updateLayers();
+  setStatus(`${q.name} added`);
+}
+
+// run last: every panel above (shapes, icons, dividers, frames, quotes,
+// themes, patterns) has now injected its heading into #panel-elements.
+categorize();
+
+})();
 
 </script>
 </body>
